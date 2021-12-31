@@ -1,14 +1,18 @@
 import React from "react";
-import { useState, useHistory } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import Success from "./Succesful";
+import { useHistory } from "react-router-dom";
 
 export default function Login() {
-    // const history = useHistory();
+  const history = useHistory();
+ 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  
+ 
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
@@ -21,14 +25,15 @@ export default function Login() {
       .then(function (response) {
         console.log(response);
         console.log("Successfully Logged in ");
-        
-        // history.push("/success");
+    
+       history.push("/success");
+      
       })
       .catch(function (error) {
         console.log(error);
       });
   };
-
+ 
   return (
     <form onSubmit={handleSubmit}>
       <h3>Sign In</h3>
